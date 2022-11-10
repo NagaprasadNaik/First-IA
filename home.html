@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <img src="logo2.png" alt="">
+    <nav>
+    
+        <a href="#">HOME</a>
+        <a href="#">ABOUT</a>
+        <a href="#">SPECIFICATINS</a>
+        <a href="#">PRODUCTS</a>
+        <a href="#">CONTACT</a</nav>
+    <DIV id="div1">
+        <h1>THE <BR> REAL <br> SOUND</h1>
+        <p>Click Here To Play</p>
+    </DIV>
+    <img src="play.png" id="play">
+    <audio  id="audio">
+        <source src="music2.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        let mysong=document.getElementById("audio")
+        let icon=document.getElementById("play")
+        
+        icon.onclick=function(){
+            if(mysong.paused){
+                mysong.play()
+                icon.src="pause.png"
+            }
+            else{
+                mysong.pause()
+                icon.src="play.png"
+
+            }
+        }
+    </script>
+</body>
+</html>
