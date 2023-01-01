@@ -1,0 +1,38 @@
+.header{
+    position: sticky;
+    top: 0;
+    width: 80%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+
+.header-name{
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 700;
+    margin-left: 40px;
+}
+
+.header-links{
+    display: flex;
+    margin: 0px 25px;
+}
+
+.header-links ul li{
+    list-style: none;
+}
+
+.header-links ul li a{
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.header-links ul li a:hover{
+    color: orange;
+}
