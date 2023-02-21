@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 40px;
+            margin: 0;
+            font-family: sans-serif;
+            background: linear-gradient(45deg, #131086, #b621f3);
+
+        }
+
+        .container {
+            min-height: 80vh;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .login-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 100px;
+            background-color: white;
+        }
+
+        .login-right {
+            background-color: rgb(169, 207, 201);
+            display: flex;
+            justify-content: center;
+        }
+
+        .login-form {
+            width: 434px;
+        }
+
+        #error {
+            color: red;
+            padding-bottom: 8px;
+        }
+
+        #labelId {
+            display: inline-block;
+            background-color: white;
+            margin: 0 10px;
+            transform: translate(30px, 10px);
+            padding: 0 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        input[type='text'],
+        input[type='password'] {
+            border: 1px solid black;
+            height: 40px;
+            padding: 0 2rem;
+            width: 100%;
+            outline: none;
+            transition: background .5s;
+            font-size: 18px;
+            border-radius: 100px;
+        }
+
+        .form-item {
+            margin-bottom: 18px;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin: 12px;
+        }
+
+        input[type='checkbox'] {
+            width: 20px;
+            height: 20px;
+        }
+
+        button {
+            border: none;
+            background: linear-gradient(45deg, #131086, #b621f3);
+            color: white;
+            border-radius: 100px;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 18px;
+            height: 40px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 18px;
+        }
+
+        .login-form-footer {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        a {
+            text-align: center;
+            text-decoration: none;
+            color: rgb(17, 17, 197);
+        }
+
+        a:hover{
+            color: red;
+        }
+
+        .img {
+            margin-right: 5px;
+            width: 20px;
+        }
+        .register{
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-left">
+            <div class="login-header">
+                <h1>Welcome To Our Application</h1>
+            </div>
+            <span id="error"></span>
+            <form class="login-form" id="form">
+                <div class="login-form-content">
+                    <div class="form-item">
+                        <label id="labelId" for="username">Enter Username</label>
+                        <input type="text" name="username" id="username">
+                    </div>
+                    <div class="form-item">
+                        <label id="labelId" for="password">Enter Password</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+                    <div class="form-item">
+                        <div class="checkbox">
+                            <input type="checkbox" id="rememberMeCheckbox">
+                            <label for="rememberMeCheckbox" id="checkboxLabelNew">Remember Me
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit">Log In</button>
+                </div>
+                <div class="login-form-footer">
+                    <a href="#">
+                        <img class="img" src="google.png" alt="">Google Login
+                    </a>
+                    <a href="#"><img class="img" src="facebook.png" alt="">Facebook Login</a>
+                </div>
+                <div class="register">
+                    <span>Not registered yet?</span><a href="Sign_up.html"> Create an Account</a>
+                </div>
+            </form>
+        </div>
+        <div class="login-right">
+            <img width="300px" src="./shopping.svg">
+        </div>
+    </div>
+
+    <script>
+        // var form = document.getElementById('form')
+
+        let stringArray = [];
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            let password = document.getElementById('password').value;
+            let username = document.getElementById('username').value;
+            let errorMessage = document.getElementById('error');
+            var flag = false;
+
+            stringArray.push(JSON.parse(localStorage.getItem('signInList')))
+            console.log(stringArray)
+            try{
+                for(let i=0; i<stringArray.length; i++){
+                    for(let j=0; j<stringArray[i].length; j++){
+                        if (username == stringArray[i][j].username && password == stringArray[i][j].password) {
+                            flag = true;
+                        }
+                    }
+                }
+            }
+            catch(err){
+                errorMessage.innerHTML = 'Invalid Username and Password'
+            }
+
+            if(flag) {
+                window.open("Sign_up.html")
+                errorMessage.innerHTML = ''
+            }
+            else{
+                errorMessage.innerHTML = 'Invalid Username and Password'
+            }
+        })
+    </script>
+</body>
+
+</html>
